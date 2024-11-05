@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Dark Mode Variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,8 +15,9 @@
   }
 }
 
+/* Apply custom colors to body */
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background); /* Use background-color instead of background */
+  font-family: Arial, Helvetica, sans-serif; /* Optional if you want to override Tailwind's default font */
 }
