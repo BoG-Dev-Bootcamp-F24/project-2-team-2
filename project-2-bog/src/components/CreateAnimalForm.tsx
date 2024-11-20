@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import styles from "./CreateAnimalForm.module.css";
 
+interface Animal {
+  name: string;
+  breed: string;
+  hoursTrained: number | null;
+  profilePictureUrl: string;
+  image?: string;
+}
+
 interface CreateAnimalFormProps {
   onClose: () => void;
-  onAnimalCreated: () => void;
+  onAnimalCreated: (newAnimal: Animal) => void;
 }
 
 const CreateAnimalForm = ({
@@ -12,7 +20,7 @@ const CreateAnimalForm = ({
 }: CreateAnimalFormProps) => {
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
-  const [hoursTrained, setHoursTrained] = useState<number>(0);
+  const [hoursTrained, setHoursTrained] = useState<number | null>(null); // Default to null
   const [profilePictureUrl, setProfilePictureUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
 
@@ -30,20 +38,31 @@ const CreateAnimalForm = ({
       if (!response.ok) {
         throw new Error("Failed to create animal");
       }
-
-      onAnimalCreated();
+      const newAnimal: Animal = {
+        name,
+        breed,
+        hoursTrained,
+        profilePictureUrl,
+      };
+      onAnimalCreated(newAnimal);
       onClose();
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     }
   };
 
+  const handleHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setHoursTrained(value === "" ? null : parseInt(value, 10));
+  };
+
   return (
-    <div className={styles["form-container"]}>
-      <h2>Create Animal</h2>
+    <div className={styles.formContainer}>
+      <h2 className={styles.h2}>Please enter all the information.</h2>
       {error && <p className={styles.error}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
+          className={styles.input}
           type="text"
           placeholder="Name"
           value={name}
@@ -51,6 +70,7 @@ const CreateAnimalForm = ({
           required
         />
         <input
+          className={styles.input}
           type="text"
           placeholder="Breed"
           value={breed}
@@ -58,21 +78,25 @@ const CreateAnimalForm = ({
           required
         />
         <input
+          className={styles.input}
           type="number"
           placeholder="Hours Trained"
-          value={hoursTrained}
-          onChange={(e) => setHoursTrained(parseInt(e.target.value, 10))}
+          value={hoursTrained ?? ""}
+          onChange={handleHoursChange}
           required
         />
         <input
+          className={styles.input}
           type="text"
           placeholder="Profile Picture URL"
           value={profilePictureUrl}
           onChange={(e) => setProfilePictureUrl(e.target.value)}
           required
         />
-        <button type="submit">Create</button>
-        <button type="button" onClick={onClose}>
+        <button type="submit" className={`${styles.button} ${styles.submit}`}>
+          Create
+        </button>
+        <button type="button" className={styles.button} onClick={onClose}>
           Cancel
         </button>
       </form>

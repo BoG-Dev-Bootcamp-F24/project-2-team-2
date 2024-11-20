@@ -9,9 +9,9 @@ import styles from "./page.module.css";
 interface Animal {
   name: string;
   breed: string;
-  owner: string;
-  hoursTrained: number;
-  image: string;
+  hoursTrained: number | null;
+  profilePictureUrl: string;
+  image?: string;
 }
 
 const AnimalsPage = () => {
@@ -55,7 +55,7 @@ const AnimalsPage = () => {
         {showForm ? (
           <CreateAnimalForm
             onClose={() => setShowForm(false)}
-            onCreate={(newAnimal: Animal) =>
+            onAnimalCreated={(newAnimal: Animal) =>
               setAnimals([...animals, newAnimal])
             }
           />
@@ -63,11 +63,11 @@ const AnimalsPage = () => {
           <div className={styles.gridContainer}>
             {animals.map((animal) => (
               <AnimalCard
-                key={animal.breed + animal.owner}
+                key={animal.breed + animal.name}
                 name={animal.name}
                 breed={animal.breed}
-                owner={animal.owner}
-                hoursTrained={animal.hoursTrained}
+                owner="Long Lam"
+                hoursTrained={animal.hoursTrained ?? 0}
                 image={animal.image}
               />
             ))}

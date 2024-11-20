@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./AnimalCard.module.css";
 
 interface AnimalCardProps {
-  image: string;
+  image?: string;
   name: string;
   breed: string;
   owner: string;
@@ -10,7 +10,7 @@ interface AnimalCardProps {
 }
 
 const AnimalCard = ({
-  image,
+  image = "/dog.svg",
   name,
   breed,
   owner,
@@ -19,12 +19,11 @@ const AnimalCard = ({
   return (
     <div className={styles.card}>
       <img src={image} alt={name} className={styles.image} />
-      <h3 className={styles.name}>{name}</h3>
-      <p className={styles.details}>Breed: {breed}</p>
-      <p className={styles.details}>Owner: {owner}</p>
+      <h3 className={styles.name}>
+        {name} - {breed}
+      </h3>
       <p className={styles.details}>
-        Hours Trained:{" "}
-        <span className={styles.hoursTrained}>{hoursTrained}</span>
+        {owner} - Trained {hoursTrained} hours
       </p>
     </div>
   );
