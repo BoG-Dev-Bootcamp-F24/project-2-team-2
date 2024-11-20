@@ -20,7 +20,7 @@ const CreateAnimalForm = ({
 }: CreateAnimalFormProps) => {
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
-  const [hoursTrained, setHoursTrained] = useState<number | null>(null); // Default to null
+  const [hoursTrained, setHoursTrained] = useState<number | null>(null);
   const [profilePictureUrl, setProfilePictureUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
 

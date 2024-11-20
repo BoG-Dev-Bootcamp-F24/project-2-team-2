@@ -4,8 +4,6 @@ import "./globals.css";
 export default function Home() {
   return (
     <>
-      {/* Render Main Layout */}
-      hello
       <Layout />
     </>
   );

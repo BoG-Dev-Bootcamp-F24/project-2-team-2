@@ -1,7 +1,11 @@
+"use client";
 import React from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const Sidebar = () => {
+  const pathname = usePathname();
+
   return (
     <div className="bg-gray-100 w-64 h-screen p-6 shadow-md flex flex-col justify-between">
       <div className="flex items-center mb-8">
@@ -13,7 +17,9 @@ const Sidebar = () => {
         <li className="mb-4">
           <Link
             href="/"
-            className="flex items-center text-red-500 font-semibold"
+            className={`flex items-center ${
+              pathname === "/" ? "text-red-500" : "text-gray-600"
+            } font-semibold`}
           >
             Training logs
           </Link>
@@ -21,7 +27,9 @@ const Sidebar = () => {
         <li className="mb-4">
           <Link
             href="/Animals"
-            className="flex items-center text-gray-600 hover:text-black"
+            className={`flex items-center ${
+              pathname === "/Animals" ? "text-red-500" : "text-gray-600"
+            } hover:text-black`}
           >
             Animals
           </Link>
