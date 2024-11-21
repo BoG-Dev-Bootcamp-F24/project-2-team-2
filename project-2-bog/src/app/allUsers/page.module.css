@@ -1,13 +1,41 @@
 .pageContainer {
-    display: flex;
+  display: flex;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 2rem;
+  background-color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: white;
     min-height: 100vh;
-    background-color: white;
-  }
-  
-  .mainContent {
-    flex: 1;
-    padding: 2rem;
-    background-color: white;
   }
   
   .header {
@@ -18,11 +46,6 @@
     margin-bottom: 1.5rem;
     border-bottom: 1px solid #e5e7eb;
   }
-  .headerLeft {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
   
   .title {
     font-size: 1.25rem;
@@ -30,102 +53,52 @@
     color: #374151;
   }
   
-  /* ... rest of your existing styles ... */
+  .card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
   
-  .container {
-      max-width: 1024px;
-      margin: 0 auto;
-      padding: 1rem;
-      background-color: white;
-      min-height: 100vh;
-    }
-    
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 1rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    
-    .title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #374151;
-    }
-    
-    .card {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      padding: 1rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .cardContent {
-      display: flex;
-      align-items: flex-start;
-    }
-    
-    .dateBox {
-      background-color: #312e81;
-      color: white;
-      width: 80px;
-      height: 80px;
-      border-radius: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-right: 1rem;
-      flex-shrink: 0;
-    }
-    
-    .dateNumber {
-      font-size: 1.75rem;
-      font-weight: bold;
-      line-height: 1;
-    }
-    
-    .dateText {
-      font-size: 0.75rem;
-      margin-top: 0.25rem;
-    }
-    
-    .logInfo {
-      flex: 1;
-    }
-    
-    .logTitle {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 0.25rem;
-    }
-    
-    .animalInfo {
-      font-size: 0.875rem;
-      color: #6b7280;
-      margin-bottom: 0.5rem;
-    }
-    
-    .description {
-      color: #374151;
-      font-size: 0.875rem;
-      line-height: 1.5;
-    }
+  .cardContent {
+    display: flex;
+    align-items: flex-start;
+  }
   
-    .searchContainer {
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-right:0px;
-      color: black;
-      padding-bottom: 5px;
-      border-bottom: 1px solid black;
-    }
+  .logInfo {
+    flex: 1;
+  }
   
-    
+  .logTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.25rem;
+  }
+  
+  .animalInfo {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+  }
+  
+  .description {
+    color: #374151;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .searchContainer {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right:0px;
+    color: black;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+  }
+
+  

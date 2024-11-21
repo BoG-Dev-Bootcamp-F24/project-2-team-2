@@ -75,9 +75,13 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <a
-            href="#"
-            className="flex items-center text-gray-800 font-bold hover:text-black"
+          <Link
+            href="/allUsers"
+            className={`flex items-center ${
+              pathname === "/allUsers"
+                ? "text-red-500 font-bold"
+                : "text-gray-600 font-bold"
+            } hover:text-black`}
           >
             <img
               src="/logo5.svg"
@@ -85,7 +89,7 @@ const Sidebar = () => {
               className="w-6 h-6 mr-3"
             />
             All users
-          </a>
+          </Link>
         </li>
       </ul>
 

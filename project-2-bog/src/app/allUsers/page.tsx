@@ -5,32 +5,31 @@ import Sidebar from "../../components/Sidebar";
 import TopBar from "../../components/TopBar";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
+import UserCard from "../../components/UserCard";
 
-interface Log {
+interface User {
   _id?: string;
-  date: string;
-  title: string;
-  animal: string;
-  hours: string;
-  description: string;
+  fullName: string;
+  email: string;
+  isAdmin: boolean;
 }
 
-export default function AllTrainingLogs() {
-  const [logs, setLogs] = useState<Log[]>([]);
+export default function AllUsers() {
+  const [users, setUsers] = useState<User[]>([]);
   const router = useRouter();
 
   useEffect(() => {
-    fetchLogs();
+    fetchUsers();
   }, []);
 
-  const fetchLogs = async () => {
+  const fetchUsers = async () => {
     try {
-      const response = await fetch("/api/admin/training");
-      if (!response.ok) throw new Error("Failed to fetch logs");
+      const response = await fetch("/api/admin/users");
+      if (!response.ok) throw new Error("Failed to fetch users");
       const data = await response.json();
-      setLogs(data);
+      setUsers(data);
     } catch (error) {
-      console.error("Error fetching logs:", error);
+      console.error("Error fetching users:", error);
     }
   };
 
@@ -38,37 +37,19 @@ export default function AllTrainingLogs() {
     <>
       <TopBar />
       <div className="flex min-h-screen bg-gray-600">
-        {" "}
         <Sidebar />
         <main className="flex-grow p-6 bg-white shadow-md">
-          {" "}
           <div className={styles.searchContainer}>
-            <h2 className="text-xl font-semibold text-gray-700">
-              All Training Logs
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-700">All Users</h2>
           </div>
           <div className={styles.logsContainer}>
-            {logs.map((log) => (
-              <div key={log._id} className={styles.card}>
-                <div className={styles.cardContent}>
-                  <div className={styles.dateBox}>
-                    <span className={styles.dateNumber}>
-                      {log.date.split(" ")[0]}
-                    </span>
-                    <span className={styles.dateText}>
-                      {log.date.split(" ")[1]}
-                    </span>
-                  </div>
-
-                  <div className={styles.logInfo}>
-                    <h3 className={styles.logTitle}>
-                      {log.title} · {log.hours}
-                    </h3>
-                    <p className={styles.animalInfo}>{log.animal}</p>
-                    <p className={styles.description}>{log.description}</p>
-                  </div>
-                </div>
-              </div>
+            {users.map((user) => (
+              <UserCard
+                key={user._id}
+                fullName={user.fullName}
+                email={user.email}
+                isAdmin={user.isAdmin}
+              />
             ))}
           </div>
         </main>
