@@ -37,7 +37,7 @@ const Sidebar = () => {
         <li className="mt-8 text-gray-600">Admin access</li>
         <li className="mb-4">
           <a
-            href="#"
+            href="/allTraining"
             className="flex items-center text-gray-600 hover:text-black"
           >
             All training
@@ -45,7 +45,7 @@ const Sidebar = () => {
         </li>
         <li className="mb-4">
           <a
-            href="#"
+            href="/allAnimals"
             className="flex items-center text-gray-600 hover:text-black"
           >
             All animals
@@ -56,7 +56,7 @@ const Sidebar = () => {
             href="#"
             className="flex items-center text-gray-800 hover:text-black"
           >
-            👥 All users
+           All users
           </a>
         </li>
       </ul>

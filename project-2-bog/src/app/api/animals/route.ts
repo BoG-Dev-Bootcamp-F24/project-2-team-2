@@ -65,3 +65,34 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+export async function PATCH(request: NextRequest) {
+  try {
+    const { animalName, breed, hours } = await request.json();
+    await connectToDatabase();
+
+    // Find the animal by name and breed
+    const animal = await Animal.findOne({ name: animalName });
+
+    if (!animal) {
+      return NextResponse.json(
+        { error: "Animal not found" },
+        { status: 404 }
+      );
+    }
+
+    // Convert hours to number if it's a string and add to existing hours
+    const hoursNumber = typeof hours === 'string' ? parseInt(hours) : hours;
+    animal.hoursTrained = (animal.hoursTrained || 0) + hoursNumber;
+
+    // Save the updated animal
+    await animal.save();
+
+    return NextResponse.json(animal, { status: 200 });
+  } catch (error) {
+    console.error("Error updating animal hours:", error);
+    return NextResponse.json(
+      { error: "Failed to update animal hours" },
+      { status: 500 }
+    );
+  }
+}
