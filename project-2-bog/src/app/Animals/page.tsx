@@ -12,6 +12,10 @@ interface Animal {
   breed: string;
   hoursTrained: number | null;
   profilePictureUrl: string;
+  birthMonth: string;
+  date: number | null;
+  year: number | null;
+  notes: string;
   image?: string;
 }
 
@@ -68,6 +72,10 @@ const AnimalsPage = () => {
                   breed={animal.breed}
                   owner="Long Lam"
                   hoursTrained={animal.hoursTrained ?? 0}
+                  birthMonth={animal.birthMonth}
+                  date={animal.date ?? 0}
+                  year={animal.year ?? 0}
+                  notes={animal.notes}
                   image={animal.image}
                 />
               ))}

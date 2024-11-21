@@ -6,6 +6,10 @@ interface Animal {
   breed: string;
   hoursTrained: number | null;
   profilePictureUrl: string;
+  birthMonth: string;
+  date: number | null;
+  year: number | null;
+  notes: string;
   image?: string;
 }
 
@@ -22,6 +26,10 @@ const CreateAnimalForm = ({
   const [breed, setBreed] = useState("");
   const [hoursTrained, setHoursTrained] = useState<number | null>(null);
   const [profilePictureUrl, setProfilePictureUrl] = useState("");
+  const [birthMonth, setBirthMonth] = useState("");
+  const [notes, setNotes] = useState("");
+  const [date, setDate] = useState<number | null>(null);
+  const [year, setYear] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,7 +40,16 @@ const CreateAnimalForm = ({
       const response = await fetch("/api/animals", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, breed, hoursTrained, profilePictureUrl }),
+        body: JSON.stringify({
+          name,
+          breed,
+          hoursTrained,
+          birthMonth,
+          date,
+          year,
+          profilePictureUrl,
+          notes,
+        }),
       });
 
       if (!response.ok) {
@@ -43,6 +60,10 @@ const CreateAnimalForm = ({
         breed,
         hoursTrained,
         profilePictureUrl,
+        birthMonth,
+        date,
+        year,
+        notes,
       };
       onAnimalCreated(newAnimal);
       onClose();
@@ -54,6 +75,14 @@ const CreateAnimalForm = ({
   const handleHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setHoursTrained(value === "" ? null : parseInt(value, 10));
+  };
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setDate(value === "" ? null : parseInt(value, 10));
+  };
+  const handleYearChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setYear(value === "" ? null : parseInt(value, 10));
   };
 
   return (
@@ -88,10 +117,41 @@ const CreateAnimalForm = ({
         <input
           className={styles.input}
           type="text"
+          placeholder="Birth Month e.g. Jul, Jan"
+          value={birthMonth ?? ""}
+          onChange={(e) => setBirthMonth(e.target.value)}
+          required
+        />
+        <input
+          className={styles.input}
+          type="number"
+          placeholder="Date"
+          value={date ?? ""}
+          onChange={handleDateChange}
+          required
+        />
+        <input
+          className={styles.input}
+          type="number"
+          placeholder="Year"
+          value={year ?? ""}
+          onChange={handleYearChange}
+          required
+        />
+        <input
+          className={styles.input}
+          type="text"
           placeholder="Profile Picture URL"
           value={profilePictureUrl}
           onChange={(e) => setProfilePictureUrl(e.target.value)}
           required
+        />
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Notes"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
         />
         <button type="submit" className={`${styles.button} ${styles.submit}`}>
           Create

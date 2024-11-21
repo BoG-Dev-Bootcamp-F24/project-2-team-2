@@ -30,6 +30,10 @@ const animalSchema = new mongoose.Schema({
   breed: String,
   hoursTrained: Number,
   profilePictureUrl: String,
+  birthMonth: String,
+  date: Number,
+  year: Number,
+  notes: String,
 });
 
 const Animal = mongoose.models.Animal || mongoose.model("Animal", animalSchema);

@@ -7,6 +7,10 @@ interface AnimalCardProps {
   breed: string;
   owner: string;
   hoursTrained: number;
+  birthMonth: string;
+  date: number | null;
+  year: number | null;
+  notes: string;
 }
 
 const AnimalCard = ({

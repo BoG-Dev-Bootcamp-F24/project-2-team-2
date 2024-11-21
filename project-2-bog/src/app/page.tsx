@@ -28,14 +28,13 @@ const TrainingLogs = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingLog, setEditingLog] = useState<Log | null>(null);
   const [newLog, setNewLog] = useState<Log>({
-    date: getCurrentDate(), // Set default date
+    date: getCurrentDate(),
     title: "",
     animal: "",
     hours: "",
     description: "",
   });
 
-  // Fetch logs on component mount
   useEffect(() => {
     fetchLogs();
   }, []);
