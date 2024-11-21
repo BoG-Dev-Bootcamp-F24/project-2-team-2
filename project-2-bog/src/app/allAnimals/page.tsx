@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import AnimalCard from "../../components/AnimalCard";
 import CreateAnimalForm from "../../components/CreateAnimalForm";
+import TopBar from "../../components/TopBar";
 import styles from "./page.module.css";
 
 interface Animal {
@@ -38,40 +39,38 @@ const AnimalsPage = () => {
   const handleCreateNew = () => setShowForm(true);
 
   return (
-    <div className={styles.pageContainer}>
-      <Sidebar />
-      <main className={styles.mainContent}>
-        <div className={styles.searchContainer}>
-          <input
-            type="text"
-            placeholder="Search"
-            className={styles.searchInput}
-          />
-        </div>
-
-        {showForm ? (
-          <CreateAnimalForm
-            onClose={() => setShowForm(false)}
-            onAnimalCreated={(newAnimal: Animal) =>
-              setAnimals([...animals, newAnimal])
-            }
-          />
-        ) : (
-          <div className={styles.gridContainer}>
-            {animals.map((animal) => (
-              <AnimalCard
-                key={animal.breed + animal.name}
-                name={animal.name}
-                breed={animal.breed}
-                owner="Long Lam"
-                hoursTrained={animal.hoursTrained ?? 0}
-                image={animal.image}
-              />
-            ))}
+    <>
+      <TopBar />
+      <div className={styles.pageContainer}>
+        <Sidebar />
+        <main className={styles.mainContent}>
+          <div className={styles.searchContainer}>
+            <h2 className="text-xl font-semibold text-gray-700">All Animals</h2>
           </div>
-        )}
-      </main>
-    </div>
+          {showForm ? (
+            <CreateAnimalForm
+              onClose={() => setShowForm(false)}
+              onAnimalCreated={(newAnimal: Animal) =>
+                setAnimals([...animals, newAnimal])
+              }
+            />
+          ) : (
+            <div className={styles.gridContainer}>
+              {animals.map((animal) => (
+                <AnimalCard
+                  key={animal.breed + animal.name}
+                  name={animal.name}
+                  breed={animal.breed}
+                  owner="Long Lam"
+                  hoursTrained={animal.hoursTrained ?? 0}
+                  image={animal.image}
+                />
+              ))}
+            </div>
+          )}
+        </main>
+      </div>
+    </>
   );
 };
 

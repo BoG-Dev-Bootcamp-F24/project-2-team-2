@@ -1,0 +1,36 @@
+.topbar-container {
+    width: 100%;
+    background-color: #cc9494; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 20px;
+    border: 50px solid black; 
+  }
+  
+  .topbar-logo {
+    height: 30px;
+    width: auto;
+    margin-right: 10px;
+  }
+  
+  .topbar-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .search-input {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 250px;
+    width: 100%;
+    font-size: 14px;
+    color: black;
+  }
+  

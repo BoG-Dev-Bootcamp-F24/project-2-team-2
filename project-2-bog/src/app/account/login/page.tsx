@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import TopBar from "../../../components/TopBar";
 import "../Auth.css";
 
 const LoginPage: React.FC = () => {
@@ -51,39 +52,44 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="auth-container">
-      <header className="auth-header">
-        <h1>Progress</h1>
-      </header>
-      <form className="auth-form" onSubmit={handleLogin}>
-        <h2>Login</h2>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        {error && <p className="error-message">{error}</p>}
-        <button type="submit" className="auth-button">
-          Log in
-        </button>
-        <p>
-          Don't have an account?{" "}
-          <Link href="/account/createAccount">Sign up</Link>
-        </p>
-      </form>
-      <footer className="auth-footer">
-        <p>Made by Chloe, Katherine, Kevin, and Lindsay ❤️</p>
-      </footer>
-    </div>
+    <>
+      <TopBar />
+      <div className="body">
+        <div className="auth-container">
+          <header className="auth-header">
+            <h1>Progress</h1>
+          </header>
+          <form className="auth-form" onSubmit={handleLogin}>
+            <h2>Login</h2>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {error && <p className="error-message">{error}</p>}
+            <button type="submit" className="auth-button">
+              Log in
+            </button>
+            <p>
+              Don't have an account?{" "}
+              <Link href="/account/createAccount">Sign up</Link>
+            </p>
+          </form>
+          <footer className="auth-footer">
+            <p>Made by Chloe, Katherine, Kevin, and Lindsay ❤️</p>
+          </footer>
+        </div>
+      </div>
+    </>
   );
 };
 

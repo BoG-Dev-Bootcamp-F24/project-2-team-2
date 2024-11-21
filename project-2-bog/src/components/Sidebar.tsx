@@ -8,19 +8,21 @@ const Sidebar = () => {
 
   return (
     <div className="bg-gray-100 w-64 h-screen p-6 shadow-md flex flex-col justify-between">
-      <div className="flex items-center mb-8">
-        <img src="/logo.png" alt="Progress Logo" className="w-12 h-6 mr-3" />
-        <h1 className="text-xl font-bold text-black">Progress</h1>
-      </div>
-
       <ul>
         <li className="mb-4">
           <Link
             href="/"
             className={`flex items-center ${
-              pathname === "/" ? "text-red-500" : "text-gray-600"
-            } font-semibold`}
+              pathname === "/"
+                ? "text-red-500 font-bold"
+                : "text-gray-600 font-bold"
+            }`}
           >
+            <img
+              src="/logo1.svg"
+              alt="Training logs icon"
+              className="w-6 h-6 mr-3"
+            />
             Training logs
           </Link>
         </li>
@@ -28,20 +30,30 @@ const Sidebar = () => {
           <Link
             href="/Animals"
             className={`flex items-center ${
-              pathname === "/Animals" ? "text-red-500" : "text-gray-600"
+              pathname === "/Animals"
+                ? "text-red-500 font-bold"
+                : "text-gray-600 font-bold"
             } hover:text-black`}
           >
+            <img src="/logo2.svg" alt="Animals icon" className="w-6 h-6 mr-3" />
             Animals
           </Link>
         </li>
-        <li className="mt-8 text-gray-600">Admin access</li>
+        <li className="mt-8 text-gray-600 font-bold">Admin access</li>
         <li className="mb-4">
           <Link
             href="/allTraining"
             className={`flex items-center ${
-              pathname === "/allTraining" ? "text-pink-500" : "text-gray-600"
+              pathname === "/allTraining"
+                ? "text-red-500 font-bold"
+                : "text-gray-600 font-bold"
             } hover:text-black`}
           >
+            <img
+              src="/logo3.svg"
+              alt="All training icon"
+              className="w-6 h-6 mr-3"
+            />
             All training
           </Link>
         </li>
@@ -49,17 +61,29 @@ const Sidebar = () => {
           <Link
             href="/allAnimals"
             className={`flex items-center ${
-              pathname === "/allAnimals" ? "text-pink-500" : "text-gray-600"
+              pathname === "/allAnimals"
+                ? "text-red-500 font-bold"
+                : "text-gray-600 font-bold"
             } hover:text-black`}
           >
+            <img
+              src="/logo4.svg"
+              alt="All animals icon"
+              className="w-6 h-6 mr-3"
+            />
             All animals
           </Link>
         </li>
         <li>
           <a
             href="#"
-            className="flex items-center text-gray-800 hover:text-black"
+            className="flex items-center text-gray-800 font-bold hover:text-black"
           >
+            <img
+              src="/logo5.svg"
+              alt="All users icon"
+              className="w-6 h-6 mr-3"
+            />
             All users
           </a>
         </li>
