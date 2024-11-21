@@ -42,7 +42,7 @@ const LoginPage: React.FC = () => {
         userData: JSON.stringify(data),
       }).toString();
 
-      router.push(`/?${queryString}`);
+      router.push(`/`);
     } catch (error) {
       setError(
         error instanceof Error ? error.message : "An unexpected error occurred"

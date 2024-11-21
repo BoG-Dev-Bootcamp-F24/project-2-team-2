@@ -36,27 +36,31 @@ const Sidebar = () => {
         </li>
         <li className="mt-8 text-gray-600">Admin access</li>
         <li className="mb-4">
-          <a
+          <Link
             href="/allTraining"
-            className="flex items-center text-gray-600 hover:text-black"
+            className={`flex items-center ${
+              pathname === "/allTraining" ? "text-pink-500" : "text-gray-600"
+            } hover:text-black`}
           >
             All training
-          </a>
+          </Link>
         </li>
         <li className="mb-4">
-          <a
+          <Link
             href="/allAnimals"
-            className="flex items-center text-gray-600 hover:text-black"
+            className={`flex items-center ${
+              pathname === "/allAnimals" ? "text-pink-500" : "text-gray-600"
+            } hover:text-black`}
           >
             All animals
-          </a>
+          </Link>
         </li>
         <li>
           <a
             href="#"
             className="flex items-center text-gray-800 hover:text-black"
           >
-           All users
+            All users
           </a>
         </li>
       </ul>
