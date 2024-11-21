@@ -20,7 +20,7 @@ const LoginPage: React.FC = () => {
     }
 
     try {
-      const response = await fetch("/api/user", {
+      const response = await fetch("/api/user/verify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +29,10 @@ const LoginPage: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to log in. Please check your credentials.");
+        const errorData = await response.json();
+        throw new Error(
+          errorData.error || "Failed to log in. Please check your credentials."
+        );
       }
 
       const data = await response.json();

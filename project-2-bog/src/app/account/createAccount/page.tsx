@@ -15,15 +15,12 @@ const SignupPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const handleSignup = async (event: React.FormEvent) => {
-    event.preventDefault(); // Prevent the default form submit behavior
+    event.preventDefault();
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-
-    // Logging the data to ensure the fields are filled out correctly
-    console.log("Sending data:", { fullName, email, password, isAdmin });
 
     try {
       const response = await fetch("/api/user", {
@@ -43,7 +40,7 @@ const SignupPage: React.FC = () => {
       if (!response.ok) {
         const responseData = await response.json();
         setError(responseData.error || "Failed to sign up. Please try again.");
-        return; // Stop further execution if the response is not OK
+        return;
       }
 
       const data = await response.json();
@@ -51,11 +48,8 @@ const SignupPage: React.FC = () => {
         setError(data.error);
         return;
       }
-
-      // Redirect to login page after successful signup
       router.push("/account/login");
     } catch (error) {
-      // Handle unexpected errors
       setError(
         error instanceof Error ? error.message : "An unexpected error occurred"
       );
@@ -70,8 +64,7 @@ const SignupPage: React.FC = () => {
       </header>
       <form className="auth-form" onSubmit={handleSignup}>
         <h2>Create Account</h2>
-        {error && <p className="error-message">{error}</p>} {/* Display error if it exists */}
-        
+        {error && <p className="error-message">{error}</p>}{" "}
         <input
           type="text"
           placeholder="Full Name"
@@ -79,7 +72,6 @@ const SignupPage: React.FC = () => {
           onChange={(e) => setFullName(e.target.value)}
           required
         />
-        
         <input
           type="email"
           placeholder="Email"
@@ -87,7 +79,6 @@ const SignupPage: React.FC = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        
         <input
           type="password"
           placeholder="Password"
@@ -95,7 +86,6 @@ const SignupPage: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        
         <input
           type="password"
           placeholder="Confirm Password"
@@ -103,7 +93,6 @@ const SignupPage: React.FC = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-        
         <label>
           <input
             type="checkbox"
@@ -112,16 +101,14 @@ const SignupPage: React.FC = () => {
           />
           Admin access
         </label>
-        
         <button type="submit" className="auth-button">
           Sign up
         </button>
-        
         <p>
           Already have an account? <Link href="/account/login">Sign in</Link>
         </p>
       </form>
-      
+
       <footer className="auth-footer">
         <p>Made by Chloe, Katherine, Kevin, and Lindsay ❤️</p>
       </footer>
