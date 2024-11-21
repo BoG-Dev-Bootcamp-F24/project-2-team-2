@@ -1,3 +1,34 @@
+// "use client";
+// import { useEffect, useState } from "react";
+// import { useRouter } from "next/navigation";
+// import Sidebar from "../components/Sidebar"; // Assuming Sidebar is in components
+// import "./globals.css";
+
+// interface HomeProps {
+//   userData: any;
+// }
+
+// export default function Home({ userData }: HomeProps) {
+//   const router = useRouter();
+
+//   useEffect(() => {
+//     console.log(userData);
+//     if (!userData) {
+//       router.push("/account/login");
+//     }
+//   }, [userData]);
+
+//   const fullName = userData?.fullName || "";
+//   const email = userData?.email || "";
+
+//   return (
+//     <div className="flex">
+//       <Sidebar fullName={fullName} email={email} />
+//       <div className="flex-1 p-6">{/* Other content goes here */}</div>
+//     </div>
+//   );
+// }
+
 import React from "react";
 import Sidebar from "./Sidebar";
 import TrainingLogs from "./TrainingLogs";

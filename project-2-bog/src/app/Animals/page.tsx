@@ -8,6 +8,7 @@ import styles from "./page.module.css";
 
 interface Animal {
   name: string;
+  owner: string;
   breed: string;
   hoursTrained: number | null;
   profilePictureUrl: string;
@@ -66,7 +67,7 @@ const AnimalsPage = () => {
                 key={animal.breed + animal.name}
                 name={animal.name}
                 breed={animal.breed}
-                owner="Long Lam"
+                owner={animal.owner}
                 hoursTrained={animal.hoursTrained ?? 0}
                 image={animal.image}
               />

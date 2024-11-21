@@ -3,6 +3,7 @@ import styles from "./CreateAnimalForm.module.css";
 
 interface Animal {
   name: string;
+  owner: string;
   breed: string;
   hoursTrained: number | null;
   profilePictureUrl: string;
@@ -19,6 +20,7 @@ const CreateAnimalForm = ({
   onAnimalCreated,
 }: CreateAnimalFormProps) => {
   const [name, setName] = useState("");
+  const [owner, setOwner] = useState(""); // Dynamic owner input
   const [breed, setBreed] = useState("");
   const [hoursTrained, setHoursTrained] = useState<number | null>(null);
   const [profilePictureUrl, setProfilePictureUrl] = useState("");
@@ -28,22 +30,37 @@ const CreateAnimalForm = ({
     e.preventDefault();
     setError(null);
 
+    // Check if owner is provided
+    if (!owner) {
+      setError("Owner (username) is required");
+      return;
+    }
+
     try {
       const response = await fetch("/api/animals", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, breed, hoursTrained, profilePictureUrl }),
+        body: JSON.stringify({
+          name,
+          owner,
+          breed,
+          hoursTrained,
+          profilePictureUrl,
+        }),
       });
 
       if (!response.ok) {
         throw new Error("Failed to create animal");
       }
+
       const newAnimal: Animal = {
         name,
+        owner,
         breed,
         hoursTrained,
         profilePictureUrl,
       };
+
       onAnimalCreated(newAnimal);
       onClose();
     } catch (err: any) {
@@ -64,11 +81,22 @@ const CreateAnimalForm = ({
         <input
           className={styles.input}
           type="text"
-          placeholder="Name"
+          placeholder="Animal Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
+
+        {/* Input for owner (dynamic, user's username) */}
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Owner (Username)"
+          value={owner}
+          onChange={(e) => setOwner(e.target.value)} // Handle owner input
+          required
+        />
+
         <input
           className={styles.input}
           type="text"
