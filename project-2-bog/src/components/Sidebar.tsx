@@ -9,7 +9,7 @@ const Sidebar = () => {
   return (
     <div className="bg-gray-100 w-64 h-screen p-6 shadow-md flex flex-col justify-between">
       <div className="flex items-center mb-8">
-        <img src="/file.svg" alt="Progress Logo" className="w-8 h-8 mr-2" />
+        <img src="/logo.png" alt="Progress Logo" className="w-12 h-6 mr-3" />
         <h1 className="text-xl font-bold text-black">Progress</h1>
       </div>
 
@@ -65,14 +65,19 @@ const Sidebar = () => {
         </li>
       </ul>
 
-      <div className="mt-auto bg-gray-600 p-4 rounded-lg flex items-center">
-        <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center text-grey-600 font-bold mr-3">
-          L
+      <div className="mt-auto bg-gray-500 p-4 rounded-lg flex items-center justify-between">
+        <div className="flex items-center">
+          <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center text-gray-600 font-bold mr-3">
+            L
+          </div>
+          <div>
+            <p>Long Lam</p>
+            <p className="text-sm text-gray-400">Admin</p>
+          </div>
         </div>
-        <div>
-          <p>Long Lam</p>
-          <p className="text-sm text-gray-400">Admin</p>
-        </div>
+        <a href="/account/login" className="hover:opacity-80 transition">
+          <img src="/logout.svg" alt="Logout" className="w-6 h-6" />
+        </a>
       </div>
     </div>
   );
